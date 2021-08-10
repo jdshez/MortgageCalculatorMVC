@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using CSharpMortgageCalculator.Helpers;
 
 namespace CSharpMortgageCalculator.Controllers
 {
@@ -43,8 +44,11 @@ namespace CSharpMortgageCalculator.Controllers
         public IActionResult App(Loan loan)
         {
             //Calc loan 
+            var loanHelper = new LoanHelper();
 
-            return View(loan);
+            Loan newLoan = loanHelper.GetPayments(loan);
+
+            return View(newLoan);
         }
 
         public IActionResult Privacy()
